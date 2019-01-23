@@ -11,7 +11,14 @@ class Routes extends Component {
       const post = this.props.posts.find(
         post => post.id === +props.match.params.id
       );
-      return <Post postInfo={post} addPost={this.props.addPost} {...props} />;
+      return (
+        <Post
+          postInfo={post}
+          addPost={this.props.addPost}
+          deletePost={this.props.deletePost}
+          {...props}
+        />
+      );
     };
 
     return (

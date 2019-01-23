@@ -8,12 +8,14 @@ class App extends Component {
     super(props);
     this.state = {
       posts: [
-        { id: 1, title: 'test1', description: 'test desc', body: 'test body' }
+        { id: 1, title: 'test1', description: 'test desc', body: 'test body' },
+        { id: 2, title: 'test2', description: 'test desc', body: 'test body' }
       ],
-      postCounter: 2
+      postCounter: 3
     };
 
     this.addPost = this.addPost.bind(this);
+    this.deletePost = this.deletePost.bind(this);
   }
 
   addPost(data) {
@@ -25,11 +27,21 @@ class App extends Component {
     }));
   }
 
+  deletePost(id) {
+    this.setState(state => ({
+      posts: state.posts.filter(post => post.id !== id)
+    }));
+  }
+
   render() {
     return (
       <main className="container my-3">
         <NavBox />
-        <Routes addPost={this.addPost} {...this.state} />
+        <Routes
+          addPost={this.addPost}
+          deletePost={this.deletePost}
+          {...this.state}
+        />
       </main>
     );
   }

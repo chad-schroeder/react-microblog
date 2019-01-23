@@ -7,25 +7,21 @@ class Post extends Component {
     super(props);
     this.state = { isEditing: false };
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  componentDidMount() {}
-
   handleEdit = evt => {
-    // this.setState({
-    //   [evt.target.name]: evt.target.value
     this.setState({ isEditing: true });
-    // });
   };
 
-  handleSubmit = evt => {
-    evt.preventDefault();
+  handleDelete = evt => {
+    this.props.deletePost(this.props.postInfo.id);
+    this.props.history.push('/');
   };
 
   render() {
-    console.log(this.state.isEditing);
     const { title, description, body } = this.props.postInfo;
-    console.log('post', this.props);
+
     if (this.state.isEditing) {
       return (
         <PostForm
@@ -48,7 +44,10 @@ class Post extends Component {
               <button className="btn btn-link" onClick={this.handleEdit}>
                 <FontAwesomeIcon icon="edit" />
               </button>
-              <button className="btn btn-link text-danger">
+              <button
+                className="btn btn-link text-danger"
+                onClick={this.handleDelete}
+              >
                 <FontAwesomeIcon icon="times" />
               </button>
             </div>
