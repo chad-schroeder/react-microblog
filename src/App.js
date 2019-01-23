@@ -7,8 +7,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: [],
-      postCounter: 1
+      posts: [
+        { id: 1, title: 'test1', description: 'test desc', body: 'test body' }
+      ],
+      postCounter: 2
     };
 
     this.addPost = this.addPost.bind(this);
@@ -27,7 +29,7 @@ class App extends Component {
     return (
       <main className="container-fluid my-3">
         <NavBox />
-        <Routes addPost={this.addPost} />
+        <Routes addPost={this.addPost} {...this.state} />
       </main>
     );
   }
