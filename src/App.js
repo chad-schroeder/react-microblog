@@ -1,26 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Routes from './Routes';
 import './App.css';
+import NavBox from './components/NavBox/NavBox';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [],
+      postCounter: 1
+    };
+
+    this.addPost = this.addPost.bind(this);
+  }
+
+  addPost(data) {
+    const post = { ...data, id: this.state.postCounter };
+
+    this.setState(state => ({
+      posts: [...state.posts, post],
+      postCounter: state.postCounter + 1
+    }));
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <main className="container-fluid my-3">
+        <NavBox />
+        <Routes addPost={this.addPost} />
+      </main>
     );
   }
 }
