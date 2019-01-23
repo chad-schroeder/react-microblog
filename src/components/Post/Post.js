@@ -27,7 +27,13 @@ class Post extends Component {
     const { title, description, body } = this.props.postInfo;
     console.log('post', this.props);
     if (this.state.isEditing) {
-      return <PostForm />;
+      return (
+        <PostForm
+          fields={this.props.postInfo}
+          addPost={this.props.addPost}
+          {...this.props}
+        />
+      );
     } else {
       return (
         <div className="Post">

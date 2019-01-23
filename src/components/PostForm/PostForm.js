@@ -5,9 +5,9 @@ class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      description: '',
-      body: ''
+      title: this.props.fields.title,
+      description: this.props.fields.description,
+      body: this.props.fields.body
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,6 +32,9 @@ class PostForm extends Component {
   }
 
   render() {
+    if (this.props.isEditing) {
+    } else {
+    }
     return (
       <>
         <h1 className="h2 mb-4">{this.props.title}</h1>
