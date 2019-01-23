@@ -27,7 +27,7 @@ class App extends Component {
 
   render() {
     return (
-      <main className="container-fluid my-3">
+      <main className="container my-3">
         <NavBox />
         <Routes addPost={this.addPost} {...this.state} />
       </main>

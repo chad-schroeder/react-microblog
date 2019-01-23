@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PostForm from '../PostForm/PostForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Post extends Component {
   constructor(props) {
@@ -38,8 +39,12 @@ class Post extends Component {
               </p>
             </div>
             <div className="ml-3 align-self-center">
-              <button onClick={this.handleEdit}>Edit</button>
-              <button>Delete</button>
+              <button className="btn btn-link" onClick={this.handleEdit}>
+                <FontAwesomeIcon icon="edit" />
+              </button>
+              <button className="btn btn-link text-danger">
+                <FontAwesomeIcon icon="times" />
+              </button>
             </div>
           </div>
 
