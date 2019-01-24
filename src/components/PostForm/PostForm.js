@@ -5,9 +5,9 @@ class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: this.props.fields.title,
-      description: this.props.fields.description,
-      body: this.props.fields.body
+      title: this.props.title,
+      description: this.props.description,
+      body: this.props.body
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,8 +32,6 @@ class PostForm extends Component {
   }
 
   render() {
-    console.log('PostForm', this.props);
-
     return (
       <>
         <div
@@ -50,7 +48,7 @@ class PostForm extends Component {
               fontWeight: 600
             }}
           >
-            {this.props.title}
+            {this.props.heading}
           </h2>
         </div>
         <form onSubmit={this.handleSubmit} className="p-4 bg-white">

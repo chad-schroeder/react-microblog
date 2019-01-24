@@ -12,13 +12,7 @@ class Routes extends Component {
         <Route
           exact
           path="/new"
-          render={props => (
-            <NewPostContainer
-              title="New Post"
-              fields={{ title: '', body: '', description: '' }}
-              {...props}
-            />
-          )}
+          render={props => <NewPostContainer heading="New Post" {...props} />}
         />
         <Route
           exact

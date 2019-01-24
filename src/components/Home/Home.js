@@ -8,8 +8,6 @@ class Home extends Component {
   };
 
   render() {
-    console.log('Home', this.props);
-
     const posts = Object.values(this.props.posts).map(post => (
       <li key={uuid()} className="list-group-item">
         <PostCard {...post} />

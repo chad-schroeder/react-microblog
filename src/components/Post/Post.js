@@ -34,12 +34,16 @@ class Post extends Component {
   }
 
   render() {
-    const { title, description, body, comments } = this.props.posts[
-      this.props.match.params.id
-    ];
+    const post = this.props.posts[this.props.match.params.id];
+    const { title, description, body, comments } = post;
 
     if (this.state.isEditing) {
-      return <NewPostContainer title="Edit Post" />;
+      return (
+        <NewPostContainer
+          heading="Edit Post"
+          {...this.props.posts[this.props.match.params.id]}
+        />
+      );
     } else {
       return (
         <>
