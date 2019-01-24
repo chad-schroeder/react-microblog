@@ -86,16 +86,24 @@ class App extends Component {
 
   render() {
     return (
-      <main className="container my-3 py-3 bg-white border rounded shadow-sm">
-        <NavBox />
-        <Routes
-          addPost={this.addPost}
-          deletePost={this.deletePost}
-          addComment={this.addComment}
-          deleteComment={this.deleteComment}
-          {...this.state}
-        />
-      </main>
+      <>
+        <header>
+          <NavBox />
+        </header>
+        <main className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-10 col-lg-8">
+              <Routes
+                addPost={this.addPost}
+                deletePost={this.deletePost}
+                addComment={this.addComment}
+                deleteComment={this.deleteComment}
+                {...this.state}
+              />
+            </div>
+          </div>
+        </main>
+      </>
     );
   }
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PostForm from '../PostForm/PostForm';
 import CommentList from '../CommentList/CommentList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import PostCard from '../PostCard/PostCard';
 
 class Post extends Component {
   constructor(props) {
@@ -45,38 +44,32 @@ class Post extends Component {
       );
     } else {
       return (
-        <div className="card">
-          <div className="card-body">
-            <div className="media">
-              <div className="media-body">
-                <h1 className="mb-1">{title}</h1>
-                <p className="lead text-muted">{description}</p>
-              </div>
-              <div className="ml-3 align-self-center">
-                <button
-                  className="btn btn-lg btn-link"
-                  onClick={this.handleEdit}
-                >
-                  <FontAwesomeIcon icon="edit" />
-                </button>
-                <button
-                  className="btn btn-lg btn-link text-danger"
-                  onClick={this.handleDelete}
-                >
-                  <FontAwesomeIcon icon="times" />
-                </button>
-              </div>
+        <>
+          <div className="media">
+            <div className="media-body">
+              <h1 className="mb-1">{title}</h1>
+              <p className="lead text-muted">{description}</p>
             </div>
-            <p className="lead">{body}</p>
+            <div className="ml-3 align-self-center">
+              <button className="btn btn-lg btn-link" onClick={this.handleEdit}>
+                <FontAwesomeIcon icon="edit" />
+              </button>
+              <button
+                className="btn btn-lg btn-link text-danger"
+                onClick={this.handleDelete}
+              >
+                <FontAwesomeIcon icon="times" />
+              </button>
+            </div>
           </div>
-          <div className="card-footer">
-            <CommentList
-              comments={comments}
-              addComment={this.addComment}
-              deleteComment={this.deleteComment}
-            />
-          </div>
-        </div>
+          <p className="lead">{body}</p>
+
+          <CommentList
+            comments={comments}
+            addComment={this.addComment}
+            deleteComment={this.deleteComment}
+          />
+        </>
       );
     }
   }
