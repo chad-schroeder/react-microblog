@@ -7,8 +7,10 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.state = { isEditing: false };
+
     this.handleEdit = this.handleEdit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.addComment = this.addComment.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
   }
 
@@ -21,14 +23,16 @@ class Post extends Component {
     this.props.history.push('/');
   }
 
+  addComment(comment) {
+    this.props.addComment(this.props.postInfo.id, comment);
+  }
+
   deleteComment(id) {
-    this.props.deleteComment(id);
+    this.props.deleteComment(this.props.postInfo.id, id);
   }
 
   render() {
-    console.log('Post', this.props);
-
-    const { title, description, body } = this.props.postInfo;
+    const { title, description, body, comments } = this.props.postInfo;
 
     if (this.state.isEditing) {
       return (
@@ -40,31 +44,28 @@ class Post extends Component {
       );
     } else {
       return (
-        <div className="Post">
+        <div className="Post px-4">
           <div className="media">
             <div className="media-body">
               <h1 className="mb-1">{title}</h1>
-              <p>
-                <em>{description}</em>
-              </p>
+              <p className="lead text-muted">{description}</p>
             </div>
             <div className="ml-3 align-self-center">
-              <button className="btn btn-link" onClick={this.handleEdit}>
+              <button className="btn btn-lg btn-link" onClick={this.handleEdit}>
                 <FontAwesomeIcon icon="edit" />
               </button>
               <button
-                className="btn btn-link text-danger"
+                className="btn btn-lg btn-link text-danger"
                 onClick={this.handleDelete}
               >
                 <FontAwesomeIcon icon="times" />
               </button>
             </div>
           </div>
-
-          <p>{body}</p>
-
+          <p className="lead">{body}</p>
           <CommentList
-            comments={this.props.comments}
+            comments={comments}
+            addComment={this.addComment}
             deleteComment={this.deleteComment}
           />
         </div>

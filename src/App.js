@@ -13,24 +13,31 @@ class App extends Component {
           id: 1,
           title: 'test1',
           description: 'test desc',
-          body: 'test body'
+          body: 'test body',
+          comments: [
+            { id: uuid(), text: 'hello' },
+            { id: uuid(), text: 'goodbye' }
+          ]
         },
         {
           id: 2,
           title: 'test2',
           description: 'test desc',
-          body: 'test body'
+          body: 'test body',
+          comments: [
+            {
+              id: uuid(),
+              text: 'this is a test of the American political system...'
+            }
+          ]
         }
       ],
-      postCounter: 3,
-      comments: [
-        { id: uuid(), postId: 1, text: 'hello' },
-        { id: uuid(), postId: 1, text: 'goodbye' }
-      ]
+      postCounter: 3
     };
 
     this.addPost = this.addPost.bind(this);
     this.deletePost = this.deletePost.bind(this);
+    this.addComment = this.addComment.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
   }
 
@@ -49,19 +56,42 @@ class App extends Component {
     }));
   }
 
-  deleteComment(id) {
+  addComment(post_id, comment) {
+    const post = this.state.posts.find(post => post.id === post_id);
+    const comments = [...post.comments, { id: uuid(), text: comment }];
+
     this.setState(state => ({
-      comments: state.comments.filter(comment => comment.id !== id)
+      posts: this.state.posts.map(p => {
+        if (p.id === post.id) {
+          return { ...post, comments };
+        }
+        return p;
+      })
+    }));
+  }
+
+  deleteComment(post_id, comment_id) {
+    const post = this.state.posts.find(post => post.id === post_id);
+    const comments = post.comments.filter(comment => comment.id !== comment_id);
+
+    this.setState(state => ({
+      posts: this.state.posts.map(p => {
+        if (p.id === post.id) {
+          return { ...post, comments };
+        }
+        return p;
+      })
     }));
   }
 
   render() {
     return (
-      <main className="container my-3">
+      <main className="container my-3 py-3 bg-white border rounded shadow-sm">
         <NavBox />
         <Routes
           addPost={this.addPost}
           deletePost={this.deletePost}
+          addComment={this.addComment}
           deleteComment={this.deleteComment}
           {...this.state}
         />

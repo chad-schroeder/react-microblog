@@ -15,7 +15,7 @@ class Routes extends Component {
           postInfo={post}
           addPost={this.props.addPost}
           deletePost={this.props.deletePost}
-          comments={this.props.comments}
+          addComment={this.props.addComment}
           deleteComment={this.props.deleteComment}
           {...props}
         />
