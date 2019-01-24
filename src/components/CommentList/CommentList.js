@@ -52,7 +52,7 @@ class CommentList extends Component {
           }}
         >
           <h2
-            className="mb-3 h4"
+            className="mb-3 h5"
             style={{
               color: '#333',
               fontWeight: 600

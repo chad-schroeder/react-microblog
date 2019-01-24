@@ -45,7 +45,7 @@ class PostForm extends Component {
           }}
         >
           <h2
-            className="mb-0 h4"
+            className="mb-0 h5"
             style={{
               color: '#333',
               fontWeight: 600

@@ -7,7 +7,9 @@ class PostCard extends Component {
 
     return (
       <Link to={`/${id}`} className="text-decoration-none">
-        <h4 className="mb-0">{title}</h4>
+        <h4 className="mb-0 h5" style={{ fontWeight: 600 }}>
+          {title}
+        </h4>
         <p className="m-0 text-muted">{description}</p>
       </Link>
     );
