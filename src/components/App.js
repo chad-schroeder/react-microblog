@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Routes from './Routes';
+import Routes from '../Routes';
 import './App.css';
-import NavBox from './components/NavBox/NavBox';
+import NavBox from './NavBox/NavBox';
 const uuid = require('uuid/v4');
 
 class App extends Component {
