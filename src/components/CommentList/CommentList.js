@@ -44,13 +44,12 @@ class CommentList extends Component {
 
     return (
       <>
-        <h2 className="my-4 pt-3">Comments</h2>
-        <ul className="list-group list-group-flush">{comments}</ul>
-        <form onSubmit={this.addComment} className="my-4">
+        <h2 className="mb-4 pt-3">Comments</h2>
+        {comments.length ? <ul className="list-group mb-4">{comments}</ul> : ''}
+        <form onSubmit={this.addComment}>
           <label htmlFor="comment" className="sr-only">
             Comment
           </label>
-
           <div className="input-group mb-3">
             <input
               type="text"
