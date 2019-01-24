@@ -9,6 +9,7 @@ class Post extends Component {
     this.state = { isEditing: false };
     this.handleEdit = this.handleEdit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
   }
 
   handleEdit() {
@@ -20,8 +21,14 @@ class Post extends Component {
     this.props.history.push('/');
   }
 
+  deleteComment(id) {
+    this.props.deleteComment(id);
+  }
+
   render() {
-    const { title, description, body, comments } = this.props.postInfo;
+    console.log('Post', this.props);
+
+    const { title, description, body } = this.props.postInfo;
 
     if (this.state.isEditing) {
       return (
@@ -56,7 +63,10 @@ class Post extends Component {
 
           <p>{body}</p>
 
-          <CommentList comments={comments} />
+          <CommentList
+            comments={this.props.comments}
+            deleteComment={this.deleteComment}
+          />
         </div>
       );
     }

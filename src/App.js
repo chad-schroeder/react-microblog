@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Routes from './Routes';
 import './App.css';
 import NavBox from './components/NavBox/NavBox';
+const uuid = require('uuid/v4');
 
 class App extends Component {
   constructor(props) {
@@ -12,22 +13,25 @@ class App extends Component {
           id: 1,
           title: 'test1',
           description: 'test desc',
-          body: 'test body',
-          comments: ['hello', 'goodbye']
+          body: 'test body'
         },
         {
           id: 2,
           title: 'test2',
           description: 'test desc',
-          body: 'test body',
-          comments: []
+          body: 'test body'
         }
       ],
-      postCounter: 3
+      postCounter: 3,
+      comments: [
+        { id: uuid(), postId: 1, text: 'hello' },
+        { id: uuid(), postId: 1, text: 'goodbye' }
+      ]
     };
 
     this.addPost = this.addPost.bind(this);
     this.deletePost = this.deletePost.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
   }
 
   addPost(data) {
@@ -45,14 +49,9 @@ class App extends Component {
     }));
   }
 
-  deleteComment(id, text) {
+  deleteComment(id) {
     this.setState(state => ({
-      posts: state.posts.map(post => {
-        if (post.id === id) {
-          post.comments.filter(comment => comment !== text);
-        }
-        return post;
-      })
+      comments: state.comments.filter(comment => comment.id !== id)
     }));
   }
 

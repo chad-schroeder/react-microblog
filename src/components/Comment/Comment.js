@@ -8,12 +8,10 @@ class Comment extends Component {
   }
 
   handleCommentDelete() {
-    this.props.deleteComment(this.props.text);
+    this.props.deleteComment(this.props.id);
   }
 
   render() {
-    console.log('Comment props', this.props);
-
     return (
       <p className="mb-1">
         <button
