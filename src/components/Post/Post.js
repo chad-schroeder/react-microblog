@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PostForm from '../PostForm/PostForm';
+import CommentList from '../CommentList/CommentList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Post extends Component {
@@ -10,17 +11,17 @@ class Post extends Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleEdit = evt => {
+  handleEdit() {
     this.setState({ isEditing: true });
-  };
+  }
 
-  handleDelete = evt => {
+  handleDelete() {
     this.props.deletePost(this.props.postInfo.id);
     this.props.history.push('/');
-  };
+  }
 
   render() {
-    const { title, description, body } = this.props.postInfo;
+    const { title, description, body, comments } = this.props.postInfo;
 
     if (this.state.isEditing) {
       return (
@@ -54,6 +55,8 @@ class Post extends Component {
           </div>
 
           <p>{body}</p>
+
+          <CommentList comments={comments} />
         </div>
       );
     }

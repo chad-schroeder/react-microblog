@@ -7,7 +7,6 @@ import Home from './components/Home/Home';
 class Routes extends Component {
   render() {
     const getPost = props => {
-      console.log('Inside getPost', props);
       const post = this.props.posts.find(
         post => post.id === +props.match.params.id
       );
@@ -16,6 +15,7 @@ class Routes extends Component {
           postInfo={post}
           addPost={this.props.addPost}
           deletePost={this.props.deletePost}
+          deleteComment={this.props.deleteComment}
           {...props}
         />
       );
@@ -23,7 +23,11 @@ class Routes extends Component {
 
     return (
       <Switch>
-        <Route exact path="/" render={() => <Home />} />
+        <Route
+          exact
+          path="/"
+          render={() => <Home posts={this.props.posts} />}
+        />
         <Route
           exact
           path="/new"

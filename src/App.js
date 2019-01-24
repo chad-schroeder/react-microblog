@@ -8,8 +8,20 @@ class App extends Component {
     super(props);
     this.state = {
       posts: [
-        { id: 1, title: 'test1', description: 'test desc', body: 'test body' },
-        { id: 2, title: 'test2', description: 'test desc', body: 'test body' }
+        {
+          id: 1,
+          title: 'test1',
+          description: 'test desc',
+          body: 'test body',
+          comments: ['hello', 'goodbye']
+        },
+        {
+          id: 2,
+          title: 'test2',
+          description: 'test desc',
+          body: 'test body',
+          comments: []
+        }
       ],
       postCounter: 3
     };
@@ -33,6 +45,17 @@ class App extends Component {
     }));
   }
 
+  deleteComment(id, text) {
+    this.setState(state => ({
+      posts: state.posts.map(post => {
+        if (post.id === id) {
+          post.comments.filter(comment => comment !== text);
+        }
+        return post;
+      })
+    }));
+  }
+
   render() {
     return (
       <main className="container my-3">
@@ -40,6 +63,7 @@ class App extends Component {
         <Routes
           addPost={this.addPost}
           deletePost={this.deletePost}
+          deleteComment={this.deleteComment}
           {...this.state}
         />
       </main>
