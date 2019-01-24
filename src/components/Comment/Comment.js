@@ -15,7 +15,7 @@ class Comment extends Component {
     console.log('Comment', this.props);
 
     return (
-      <li className="list-group-item">
+      <li className="list-group-item bg-transparent">
         <p className="mb-0 text-capitalize">
           <button
             className="btn btn-link border text-danger mr-3"

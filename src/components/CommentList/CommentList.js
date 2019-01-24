@@ -44,8 +44,22 @@ class CommentList extends Component {
 
     return (
       <>
-        <h2 className="mb-4 pt-3">Comments</h2>
-        {comments.length ? <ul className="list-group mb-4">{comments}</ul> : ''}
+        <h2
+          className="mt-4 mb-0 py-3 px-3 h4"
+          style={{
+            color: '#333',
+            fontWeight: 600,
+            borderTop: '4px solid #333',
+            backgroundColor: '#e9ecef'
+          }}
+        >
+          Comments
+        </h2>
+        {comments.length ? (
+          <ul className="list-group list-group-flush mb-4">{comments}</ul>
+        ) : (
+          ''
+        )}
         <form onSubmit={this.addComment}>
           <label htmlFor="comment" className="sr-only">
             Comment
