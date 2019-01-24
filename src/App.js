@@ -7,33 +7,6 @@ const uuid = require('uuid/v4');
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      posts: [
-        {
-          id: 1,
-          title: 'Hello, World!',
-          description: 'test desc',
-          body: 'test body',
-          comments: [
-            { id: uuid(), text: 'hello' },
-            { id: uuid(), text: 'goodbye' }
-          ]
-        },
-        {
-          id: 2,
-          title: 'This is an example of post 2',
-          description: 'test desc',
-          body: 'test body',
-          comments: [
-            {
-              id: uuid(),
-              text: 'this is a test of the American political system...'
-            }
-          ]
-        }
-      ],
-      postCounter: 3
-    };
 
     this.addPost = this.addPost.bind(this);
     this.deletePost = this.deletePost.bind(this);

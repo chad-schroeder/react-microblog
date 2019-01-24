@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 class PostForm extends Component {
   constructor(props) {
@@ -23,8 +23,7 @@ class PostForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    // this.props.addPost(this.state);
-    this.props.dispatch({ type: 'ADD_POST', payload: this.state });
+    this.props.addPost(this.state);
     this.setState({
       title: '',
       description: '',
@@ -105,4 +104,4 @@ class PostForm extends Component {
   }
 }
 
-export default connect()(PostForm);
+export default PostForm;

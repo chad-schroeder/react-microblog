@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import PostForm from './components/PostForm/PostForm';
-import Post from './components/Post/Post';
+import PostContainer from './components/Post/Post';
+import NewPostContainer from './containers/NewPostContainer';
 import HomeContainer from './containers/HomeContainer';
 
 class Routes extends Component {
@@ -11,7 +11,7 @@ class Routes extends Component {
         post => post.id === +props.match.params.id
       );
       return (
-        <Post
+        <PostContainer
           postInfo={post}
           addPost={this.props.addPost}
           deletePost={this.props.deletePost}
@@ -29,15 +29,18 @@ class Routes extends Component {
           exact
           path="/new"
           render={props => (
-            <PostForm
+            <NewPostContainer
               title="New Post"
               fields={{ title: '', body: '', description: '' }}
-              addPost={this.props.addPost}
               {...props}
             />
           )}
         />
-        <Route exact path="/:id" render={getPost} />
+        <Route
+          exact
+          path="/:id"
+          render={props => <PostContainer {...props} />}
+        />
         <Redirect to="/" />
       </Switch>
     );

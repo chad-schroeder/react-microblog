@@ -32,17 +32,15 @@ class Post extends Component {
   }
 
   render() {
-    const { title, description, body, comments } = this.props.postInfo;
+    console.log('Post', this.props);
+    console.log('Id', this.props.match.params.id);
+
+    const { title, description, body, comments } = this.props.posts[
+      this.props.match.params.id
+    ];
 
     if (this.state.isEditing) {
-      return (
-        <NewPostContainer />
-        // <PostForm
-        //   fields={this.props.postInfo}
-        //   addPost={this.props.addPost}
-        //   {...this.props}
-        // />
-      );
+      return <NewPostContainer title="Edit Post" />;
     } else {
       return (
         <>
@@ -74,11 +72,11 @@ class Post extends Component {
             </div>
             <p>{body}</p>
           </div>
-          <CommentList
+          {/* <CommentList
             comments={comments}
             addComment={this.addComment}
             deleteComment={this.deleteComment}
-          />
+          /> */}
         </>
       );
     }

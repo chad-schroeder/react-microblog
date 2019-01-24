@@ -31,7 +31,11 @@ function rootReducer(state = INITIAL_STATE, action) {
         ...state,
         posts: {
           ...state.posts,
-          [state.postCounter]: { id: state.postCounter, ...action.payload }
+          [state.postCounter]: {
+            ...action.payload,
+            id: state.postCounter,
+            comments: {}
+          }
         },
         postCounter: state.postCounter + 1
       };

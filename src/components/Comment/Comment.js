@@ -19,7 +19,7 @@ class Comment extends Component {
         <p className="d-flex justify-content-between align-items-center mb-0 text-capitalize">
           {this.props.text}
           <button
-            className="btn btn-link border text-danger mr-3"
+            className="btn btn-link border text-danger"
             onClick={this.deleteComment}
           >
             <FontAwesomeIcon icon="times" />

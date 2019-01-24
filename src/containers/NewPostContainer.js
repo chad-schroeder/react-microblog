@@ -10,9 +10,7 @@ class NewPostContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    postCounter: state.postCounter
-  };
+  return {};
 }
 
 const connectedComponent = connect(
