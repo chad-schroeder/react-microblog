@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import PostForm from './components/PostForm/PostForm';
 import Post from './components/Post/Post';
-import Home from './components/Home/Home';
+import HomeContainer from './containers/HomeContainer';
 
 class Routes extends Component {
   render() {
@@ -24,11 +24,7 @@ class Routes extends Component {
 
     return (
       <Switch>
-        <Route
-          exact
-          path="/"
-          render={() => <Home posts={this.props.posts} />}
-        />
+        <Route exact path="/" render={() => <HomeContainer />} />
         <Route
           exact
           path="/new"

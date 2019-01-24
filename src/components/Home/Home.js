@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PostCard from '../PostCard/PostCard';
+const uuid = require('uuid/v4');
 
 class Home extends Component {
   static defaultProps = {
@@ -7,8 +8,10 @@ class Home extends Component {
   };
 
   render() {
-    const posts = this.props.posts.map(post => (
-      <li key={post.id} className="list-group-item">
+    console.log('Home', this.props);
+
+    const posts = Object.values(this.props.posts).map(post => (
+      <li key={uuid()} className="list-group-item">
         <PostCard {...post} />
       </li>
     ));

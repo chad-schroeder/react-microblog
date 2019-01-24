@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PostForm from '../PostForm/PostForm';
 import CommentList from '../CommentList/CommentList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import NewPostContainer from '../../containers/NewPostContainer';
 
 class Post extends Component {
   constructor(props) {
@@ -36,11 +36,12 @@ class Post extends Component {
 
     if (this.state.isEditing) {
       return (
-        <PostForm
-          fields={this.props.postInfo}
-          addPost={this.props.addPost}
-          {...this.props}
-        />
+        <NewPostContainer />
+        // <PostForm
+        //   fields={this.props.postInfo}
+        //   addPost={this.props.addPost}
+        //   {...this.props}
+        // />
       );
     } else {
       return (

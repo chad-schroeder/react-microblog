@@ -11,7 +11,7 @@ class App extends Component {
       posts: [
         {
           id: 1,
-          title: 'test1',
+          title: 'Hello, World!',
           description: 'test desc',
           body: 'test body',
           comments: [
@@ -21,7 +21,7 @@ class App extends Component {
         },
         {
           id: 2,
-          title: 'test2',
+          title: 'This is an example of post 2',
           description: 'test desc',
           body: 'test body',
           comments: [
