@@ -10,7 +10,7 @@ class CommentList extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.addComment = this.addComment.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(evt) {
@@ -19,7 +19,7 @@ class CommentList extends Component {
     });
   }
 
-  addComment(evt) {
+  handleSubmit(evt) {
     evt.preventDefault();
     this.props.addComment(this.state.comment);
     this.setState({
@@ -28,14 +28,10 @@ class CommentList extends Component {
   }
 
   render() {
-    let comments = {};
-
-    comments = Object.values(this.props.comments).map(comment => (
+    const comments = Object.values(this.props.comments).map(comment => (
       <Comment
         key={uuid()}
-        id={comment.id}
-        text={comment.text}
-        addComment={this.addComment}
+        {...comment}
         deleteComment={this.props.deleteComment}
       />
     ));
@@ -58,7 +54,7 @@ class CommentList extends Component {
           >
             Comments
           </h2>
-          <form onSubmit={this.addComment}>
+          <form onSubmit={this.handleSubmit}>
             <label htmlFor="comment" className="sr-only">
               Comment
             </label>
