@@ -37,8 +37,24 @@ class PostForm extends Component {
     }
     return (
       <>
-        <h1 className="h2 mb-4">{this.props.title}</h1>
-        <form onSubmit={this.handleSubmit}>
+        <div
+          className="py-3 px-4"
+          style={{
+            borderTop: '3px solid #333',
+            backgroundColor: '#e9ecef'
+          }}
+        >
+          <h2
+            className="mb-0 h4"
+            style={{
+              color: '#333',
+              fontWeight: 600
+            }}
+          >
+            {this.props.title}
+          </h2>
+        </div>
+        <form onSubmit={this.handleSubmit} className="p-4 bg-white">
           <div className="form-group">
             <label htmlFor="title">Title</label>
             <input
