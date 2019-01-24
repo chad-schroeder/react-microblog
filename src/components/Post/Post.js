@@ -9,7 +9,7 @@ class Post extends Component {
     this.state = { isEditing: false };
 
     this.handleEdit = this.handleEdit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+    this.deletePost = this.deletePost.bind(this);
     this.addComment = this.addComment.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
   }
@@ -18,23 +18,22 @@ class Post extends Component {
     this.setState({ isEditing: true });
   }
 
-  handleDelete() {
-    this.props.deletePost(this.props.postInfo.id);
+  deletePost() {
+    this.props.deletePost(this.props.match.params.id);
     this.props.history.push('/');
   }
 
   addComment(comment) {
-    this.props.addComment(this.props.postInfo.id, comment);
+    const payload = { post_id: +this.props.match.params.id, text: comment };
+    this.props.addComment(payload);
   }
 
-  deleteComment(id) {
-    this.props.deleteComment(this.props.postInfo.id, id);
+  deleteComment(comment_id) {
+    const payload = { post_id: +this.props.match.params.id, comment_id };
+    this.props.deleteComment(payload);
   }
 
   render() {
-    console.log('Post', this.props);
-    console.log('Id', this.props.match.params.id);
-
     const { title, description, body, comments } = this.props.posts[
       this.props.match.params.id
     ];
@@ -45,12 +44,12 @@ class Post extends Component {
       return (
         <>
           <div
-            className="Post p-3 bg-white"
+            className="Post p-3 pb-4 bg-white"
             style={{ borderTop: '3px solid #444' }}
           >
             <div className="media">
               <div className="media-body">
-                <h1 className="mb-1 h2" style={{ fontWeight: 600 }}>
+                <h1 className="mb-0 h2" style={{ fontWeight: 600 }}>
                   {title}
                 </h1>
                 <p className="text-muted">{description}</p>
@@ -64,7 +63,7 @@ class Post extends Component {
                 </button>
                 <button
                   className="btn btn-lg btn-link text-danger px-2"
-                  onClick={this.handleDelete}
+                  onClick={this.deletePost}
                 >
                   <FontAwesomeIcon icon="times" />
                 </button>
@@ -72,11 +71,11 @@ class Post extends Component {
             </div>
             <p>{body}</p>
           </div>
-          {/* <CommentList
+          <CommentList
             comments={comments}
             addComment={this.addComment}
             deleteComment={this.deleteComment}
-          /> */}
+          />
         </>
       );
     }

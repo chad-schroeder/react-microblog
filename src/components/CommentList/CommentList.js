@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Comment from '../Comment/Comment';
+const uuid = require('uuid/v4');
 
 class CommentList extends Component {
   constructor(props) {
@@ -10,7 +11,6 @@ class CommentList extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.addComment = this.addComment.bind(this);
-    this.deleteComment = this.deleteComment.bind(this);
   }
 
   handleChange(evt) {
@@ -27,32 +27,30 @@ class CommentList extends Component {
     });
   }
 
-  deleteComment(id) {
-    this.props.deleteComment(id);
-  }
-
   render() {
-    const comments = this.props.comments.map(comment => (
+    let comments = {};
+
+    comments = Object.values(this.props.comments).map(comment => (
       <Comment
-        key={comment.id}
+        key={uuid()}
         id={comment.id}
         text={comment.text}
         addComment={this.addComment}
-        deleteComment={this.deleteComment}
+        deleteComment={this.props.deleteComment}
       />
     ));
 
     return (
       <>
         <div
-          className="mt-4 mb-0 py-3 px-4"
+          className="mb-0 py-3 px-4"
           style={{
             borderTop: '3px solid #333',
             backgroundColor: '#e9ecef'
           }}
         >
           <h2
-            className="mb-3 h5"
+            className="mb-2 h5"
             style={{
               color: '#333',
               fontWeight: 600

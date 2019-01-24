@@ -4,23 +4,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class Comment extends Component {
   constructor(props) {
     super(props);
-    this.deleteComment = this.deleteComment.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  deleteComment() {
+  handleDelete() {
     this.props.deleteComment(this.props.id);
   }
 
   render() {
-    console.log('Comment', this.props);
-
     return (
       <li className="list-group-item px-4">
-        <p className="d-flex justify-content-between align-items-center mb-0 text-capitalize">
+        <p className="d-flex justify-content-between align-items-center mb-0">
           {this.props.text}
           <button
             className="btn btn-link border text-danger"
-            onClick={this.deleteComment}
+            onClick={this.handleDelete}
           >
             <FontAwesomeIcon icon="times" />
           </button>
