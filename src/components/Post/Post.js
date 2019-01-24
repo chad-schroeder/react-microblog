@@ -47,15 +47,20 @@ class Post extends Component {
         <>
           <div className="media">
             <div className="media-body">
-              <h1 className="mb-1">{title}</h1>
-              <p className="lead text-muted">{description}</p>
+              <h1 className="mb-0" style={{ fontWeight: 600 }}>
+                {title}
+              </h1>
+              <p className="lead">{description}</p>
             </div>
             <div className="ml-3 align-self-center">
-              <button className="btn btn-lg btn-link" onClick={this.handleEdit}>
+              <button
+                className="btn btn-lg btn-link px-2"
+                onClick={this.handleEdit}
+              >
                 <FontAwesomeIcon icon="edit" />
               </button>
               <button
-                className="btn btn-lg btn-link text-danger"
+                className="btn btn-lg btn-link text-danger px-2"
                 onClick={this.handleDelete}
               >
                 <FontAwesomeIcon icon="times" />

@@ -8,11 +8,10 @@ class NavBox extends Component {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8">
-              <h1 className="display-4 mb-0" style={{ fontWeight: 600 }}>
-                Microblog
-              </h1>
-
-              <p className="lead mb-3">Get in the Rithm of blogging!</p>
+              <h1 className="display-4 mb-0">Microblog</h1>
+              <p className="lead text-muted mb-3">
+                Get in the Rithm of blogging!
+              </p>
               <NavLink
                 exact
                 className="mr-4 lead text-decoration-none"

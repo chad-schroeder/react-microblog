@@ -44,6 +44,29 @@ class CommentList extends Component {
 
     return (
       <>
+        <form onSubmit={this.addComment} className="mt-4">
+          <label htmlFor="comment" className="sr-only">
+            Comment
+          </label>
+          <div className="input-group mb-3">
+            <input
+              type="text"
+              name="comment"
+              className="form-control"
+              value={this.state.comment}
+              onChange={this.handleChange}
+              placeholder="Add comment..."
+              aria-label="Add comment"
+              aria-describedby="button-addon2"
+            />
+            <div className="input-group-append">
+              <button className="btn btn-secondary" id="button-addon2">
+                Button
+              </button>
+            </div>
+          </div>
+        </form>
+
         <h2
           className="mt-4 mb-0 py-3 px-3 h4"
           style={{
@@ -60,28 +83,6 @@ class CommentList extends Component {
         ) : (
           ''
         )}
-        <form onSubmit={this.addComment}>
-          <label htmlFor="comment" className="sr-only">
-            Comment
-          </label>
-          <div className="input-group mb-3">
-            <input
-              type="text"
-              name="comment"
-              className="form-control form-control-lg"
-              value={this.state.comment}
-              onChange={this.handleChange}
-              placeholder="Add comment..."
-              aria-label="Add comment"
-              aria-describedby="button-addon2"
-            />
-            <div className="input-group-append">
-              <button className="btn btn-secondary" id="button-addon2">
-                Button
-              </button>
-            </div>
-          </div>
-        </form>
       </>
     );
   }
