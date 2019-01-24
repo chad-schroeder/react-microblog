@@ -6,14 +6,14 @@ class PostCard extends Component {
     const { id, title, description } = this.props;
 
     return (
-      <div className="card">
-        <div className="card-body">
-          <h4 className="card-title">
-            <Link to={`/${id}`}>{title}</Link>
-          </h4>
-          <p className="m-0">{description}</p>
-        </div>
-      </div>
+      <>
+        <h4 className="mb-0">
+          <Link to={`/${id}`} className="text-decoration-none">
+            {title}
+          </Link>
+        </h4>
+        <p className="m-0 text-muted">{description}</p>
+      </>
     );
   }
 }
