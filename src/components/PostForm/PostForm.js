@@ -74,12 +74,14 @@ class PostForm extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
-            Save
-          </button>
-          <Link to="/" className="btn btn-secondary ml-2">
-            Cancel
-          </Link>
+          <div className="d-flex justify-content-end">
+            <button type="submit" className="btn btn-primary">
+              Save
+            </button>
+            <Link to="/" className="btn btn-secondary ml-2">
+              Cancel
+            </Link>
+          </div>
         </form>
       </>
     );

@@ -15,15 +15,15 @@ class Comment extends Component {
     console.log('Comment', this.props);
 
     return (
-      <li className="list-group-item bg-transparent">
-        <p className="mb-0 text-capitalize">
+      <li className="list-group-item px-4">
+        <p className="d-flex justify-content-between align-items-center mb-0 text-capitalize">
+          {this.props.text}
           <button
             className="btn btn-link border text-danger mr-3"
             onClick={this.deleteComment}
           >
             <FontAwesomeIcon icon="times" />
           </button>
-          {this.props.text}
         </p>
       </li>
     );

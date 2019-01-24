@@ -45,30 +45,34 @@ class Post extends Component {
     } else {
       return (
         <>
-          <div className="media">
-            <div className="media-body">
-              <h1 className="mb-0" style={{ fontWeight: 600 }}>
-                {title}
-              </h1>
-              <p className="lead">{description}</p>
+          <div
+            className="Post p-3 bg-white"
+            style={{ borderTop: '3px solid #444' }}
+          >
+            <div className="media">
+              <div className="media-body">
+                <h1 className="mb-1 h2" style={{ fontWeight: 600 }}>
+                  {title}
+                </h1>
+                <p className="text-muted">{description}</p>
+              </div>
+              <div className="ml-3 align-self-center">
+                <button
+                  className="btn btn-lg btn-link px-2"
+                  onClick={this.handleEdit}
+                >
+                  <FontAwesomeIcon icon="edit" />
+                </button>
+                <button
+                  className="btn btn-lg btn-link text-danger px-2"
+                  onClick={this.handleDelete}
+                >
+                  <FontAwesomeIcon icon="times" />
+                </button>
+              </div>
             </div>
-            <div className="ml-3 align-self-center">
-              <button
-                className="btn btn-lg btn-link px-2"
-                onClick={this.handleEdit}
-              >
-                <FontAwesomeIcon icon="edit" />
-              </button>
-              <button
-                className="btn btn-lg btn-link text-danger px-2"
-                onClick={this.handleDelete}
-              >
-                <FontAwesomeIcon icon="times" />
-              </button>
-            </div>
+            <p>{body}</p>
           </div>
-          <p className="lead">{body}</p>
-
           <CommentList
             comments={comments}
             addComment={this.addComment}
