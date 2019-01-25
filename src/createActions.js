@@ -11,6 +11,14 @@ import {
 
 const BASE_URL = 'http://localhost:5000';
 
+export function getPostsFromAPI() {
+  return async function(dispatch) {
+    const res = await axios.get(BASE_URL + '/api/posts');
+    const posts = res.data;
+    dispatch(getPosts(posts));
+  };
+}
+
 export function addPost(data) {
   return {
     type: ADD_POST,
@@ -27,14 +35,6 @@ export function addPost(data) {
 //     dispatch(addPost(id, title, description, body, votes));
 //   };
 // }
-
-export function getPostsFromAPI() {
-  return async function(dispatch) {
-    const res = await axios.get(BASE_URL + '/api/posts');
-    const posts = res.data;
-    dispatch(getPosts(posts));
-  };
-}
 
 export function getPosts(data) {
   console.log('getPosts', data);
