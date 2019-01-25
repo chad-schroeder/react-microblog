@@ -49,7 +49,8 @@ class PostForm extends Component {
       const payload = { ...this.state, id: this.props.id };
       this.props.editPost(payload);
     } else {
-      this.props.addPost(this.state);
+      const { validForm, ...state } = this.state;
+      this.props.addPostToAPI(state);
     }
 
     this.props.history.push('/');

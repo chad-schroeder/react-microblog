@@ -1,5 +1,6 @@
 import {
   GET_POSTS,
+  GET_POST,
   ADD_POST,
   EDIT_POST,
   DELETE_POST,
@@ -10,32 +11,6 @@ const uuid = require('uuid/v4');
 
 const INITIAL_STATE = {
   posts: {},
-  // posts: {
-  //   '1': {
-  //     id: 1,
-  //     title: 'Hello, Redux!',
-  //     description: 'Take some time to think about your Redux plan.',
-  //     body: 'Make a plan before you start coding!',
-  //     comments: {
-  //       '1': {
-  //         id: 1,
-  //         text:
-  //           'When you add Redux-Thunk, you have to change the way you incorporate the dev tools into your store.'
-  //       },
-  //       '2': {
-  //         id: 2,
-  //         text: 'Take some time to think about your Redux plan'
-  //       }
-  //     }
-  //   },
-  //   '2': {
-  //     id: 2,
-  //     title: 'Goodbye, World!',
-  //     description: 'Convert your app to Redux',
-  //     body: 'Figure out which components should be connected!',
-  //     comments: {}
-  //   }
-  // },
   loading: false,
   error: false,
   postCounter: 3,
@@ -46,23 +21,7 @@ function rootReducer(state = INITIAL_STATE, action) {
   console.log('reducer ran; state & action:', state, action);
 
   switch (action.type) {
-    case ADD_POST:
-      return {
-        ...state,
-        posts: {
-          ...state.posts,
-          [state.postCounter]: {
-            ...action.payload,
-            id: state.postCounter,
-            comments: {}
-          }
-        },
-        postCounter: state.postCounter + 1
-      };
-
     case GET_POSTS: {
-      console.log('GET POSTS', action.payload);
-
       const posts = action.payload;
 
       // refactor array of post data into post object
@@ -77,6 +36,36 @@ function rootReducer(state = INITIAL_STATE, action) {
         postsAPI: posts
       };
     }
+
+    case GET_POST: {
+      // get post from payload
+      const post = action.payload;
+      // make copy of posts
+      const posts = state.posts;
+      // update/add post to posts
+      state.posts[post.id] = { ...post };
+
+      return {
+        ...state,
+        posts: posts
+      };
+    }
+
+    case ADD_POST:
+      console.log('Reducer [ADD_POST]', action.payload);
+
+      return {
+        ...state,
+        posts: {
+          ...state.posts,
+          [state.postCounter]: {
+            ...action.payload,
+            id: state.postCounter,
+            comments: {}
+          }
+        },
+        postCounter: state.postCounter + 1
+      };
 
     case EDIT_POST: {
       const { id, title, description, body } = action.payload;

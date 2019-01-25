@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addPost } from '../createActions';
+import { addPost, addPostToAPI } from '../createActions';
 import PostForm from '../components/PostForm/PostForm';
 
 class NewPostContainer extends Component {
@@ -11,7 +11,7 @@ class NewPostContainer extends Component {
 
 const connectedComponent = connect(
   null,
-  { addPost }
+  { addPost, addPostToAPI }
 );
 
 export default connectedComponent(NewPostContainer);

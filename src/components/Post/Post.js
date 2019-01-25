@@ -7,6 +7,7 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.state = { isEditing: false };
+    this.post_id = this.props.match.params.id;
 
     this.handleEdit = this.handleEdit.bind(this);
     this.deletePost = this.deletePost.bind(this);
@@ -15,7 +16,7 @@ class Post extends Component {
   }
 
   componentDidMount() {
-    // fire the API getPost
+    this.props.getPostFromAPI(this.post_id);
   }
 
   handleEdit() {
@@ -23,22 +24,24 @@ class Post extends Component {
   }
 
   deletePost() {
-    this.props.deletePost(this.props.match.params.id);
+    this.props.deletePost(this.post_id);
     this.props.history.push('/');
   }
 
   addComment(comment) {
-    const payload = { post_id: +this.props.match.params.id, text: comment };
+    const payload = { post_id: +this.post_id, text: comment };
     this.props.addComment(payload);
   }
 
   deleteComment(comment_id) {
-    const payload = { post_id: +this.props.match.params.id, comment_id };
+    const payload = { post_id: +this.post_id, comment_id };
     this.props.deleteComment(payload);
   }
 
   render() {
+    // add loading state if post not found/loading
     if (!this.props.post) return <p>Loading...</p>;
+
     const { title, body, comments } = this.props.post;
 
     if (this.state.isEditing) {
@@ -47,7 +50,7 @@ class Post extends Component {
           heading="Edit Post"
           isEditing={true}
           {...this.props}
-          {...this.props.posts[this.props.match.params.id]}
+          {...this.props.posts[this.post_id]}
         />
       );
     } else {
@@ -117,11 +120,11 @@ class Post extends Component {
             </div>
           </div>
 
-          {/* <CommentList
+          <CommentList
             comments={comments}
             addComment={this.addComment}
             deleteComment={this.deleteComment}
-          /> */}
+          />
         </>
       );
     }

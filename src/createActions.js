@@ -12,6 +12,8 @@ import {
 
 const BASE_URL = 'http://localhost:5000';
 
+/* Get all posts from API */
+
 export function getPostsFromAPI() {
   return async function(dispatch) {
     const res = await axios.get(BASE_URL + '/api/posts');
@@ -20,20 +22,37 @@ export function getPostsFromAPI() {
   };
 }
 
+export function getPosts(data) {
+  return {
+    type: GET_POSTS,
+    payload: data
+  };
+}
+
+/* Get post from API */
+
 export function getPostFromAPI(id) {
   return async function(dispatch) {
     const res = await axios.get(`${BASE_URL}/api/posts/${id}`);
     const post = res.data;
-    console.log('getPostsFromAPI', post);
     dispatch(getPost(post));
   };
 }
 
-export function getPost(data) {
-  console.log('getPost', data);
+export function getPost(post) {
   return {
     type: GET_POST,
-    payload: data
+    payload: post
+  };
+}
+
+/* Add post to API */
+
+export function addPostToAPI(data) {
+  return async function(dispatch) {
+    const res = await axios.post(`${BASE_URL}/api/posts`, data);
+    const post = res.data;
+    dispatch(addPost(post));
   };
 }
 
@@ -44,23 +63,7 @@ export function addPost(data) {
   };
 }
 
-//THUNK version
-// export function getaddPost(data) {
-//   console.log('Create actions addPost DATA is', data);
-//   return async function(dispatch) {
-//     const res = await axios.post(BASE_URL + '/api/');
-//     const { id, title, description, body, votes } = res.data;
-//     dispatch(addPost(id, title, description, body, votes));
-//   };
-// }
-
-export function getPosts(data) {
-  console.log('getPosts', data);
-  return {
-    type: GET_POSTS,
-    payload: data
-  };
-}
+/* Edit post in API */
 
 export function editPost(data) {
   return {
@@ -68,6 +71,8 @@ export function editPost(data) {
     payload: data
   };
 }
+
+/* Delete post from API */
 
 export function deletePost(id) {
   return {
