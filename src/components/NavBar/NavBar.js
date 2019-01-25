@@ -8,7 +8,6 @@ class NavBar extends Component {
         <NavLink
           exact
           className="mr-4 py-2 text-decoration-none"
-          activeClassName=""
           style={{ fontSize: '1.15rem' }}
           to="/"
         >
@@ -17,7 +16,6 @@ class NavBar extends Component {
         <NavLink
           exact
           className="py-2 text-decoration-none"
-          activeClassName=""
           style={{ fontSize: '1.15rem' }}
           to="/new"
         >

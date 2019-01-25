@@ -17,7 +17,7 @@ class Home extends Component {
     return (
       <>
         <div
-          className="mb-4 px-4 py-3 bg-dark text-white"
+          className="mb-3 px-4 py-4 bg-dark text-white"
           style={{ borderTop: '4px solid #444' }}
         >
           <h2 style={{ fontSize: '1rem' }}>

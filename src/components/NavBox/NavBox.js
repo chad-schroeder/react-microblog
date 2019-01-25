@@ -8,8 +8,10 @@ class NavBox extends Component {
         <div className="row justify-content-center">
           <div className="col-12 col-md-10 col-lg-8">
             <div
-              className="jumbotron mb-4 py-4 rounded-0"
-              style={{ borderTop: '8px solid #444' }}
+              className="jumbotron mb-3 py-4 rounded-0"
+              style={{
+                borderTop: '8px solid #444'
+              }}
             >
               <p
                 className="text-muted text-uppercase mb-0"

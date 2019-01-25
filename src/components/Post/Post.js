@@ -35,7 +35,7 @@ class Post extends Component {
 
   render() {
     const post = this.props.posts[this.props.match.params.id];
-    const { title, description, body, comments } = post;
+    const { title, body, comments } = post;
 
     if (this.state.isEditing) {
       return (
@@ -50,7 +50,7 @@ class Post extends Component {
       return (
         <>
           <div
-            className="Post mb-4 p-4 pb-4 bg-white"
+            className="Post mb-3 p-4 pb-4 bg-white"
             style={{ borderTop: '4px solid #444' }}
           >
             <div className="media">
@@ -67,21 +67,24 @@ class Post extends Component {
                 >
                   {title}
                 </h1>
-                {/* <p className="text-muted">{description}</p> */}
               </div>
               <div className="ml-3 align-self-center">
-                <button
-                  className="btn btn-lg btn-link px-2"
-                  onClick={this.handleEdit}
-                >
-                  <FontAwesomeIcon icon="edit" />
-                </button>
-                <button
-                  className="btn btn-lg btn-link text-danger px-2"
-                  onClick={this.deletePost}
-                >
-                  <FontAwesomeIcon icon="times" />
-                </button>
+                <div className="btn-group" role="group">
+                  <button
+                    className="btn btn-white px-3 text-primary"
+                    style={{ borderColor: '#dee2e6' }}
+                    onClick={this.handleEdit}
+                  >
+                    <FontAwesomeIcon icon="edit" />
+                  </button>
+                  <button
+                    className="btn btn-white text-danger px-3"
+                    style={{ borderColor: '#dee2e6' }}
+                    onClick={this.deletePost}
+                  >
+                    <FontAwesomeIcon icon="times" />
+                  </button>
+                </div>
               </div>
             </div>
             <p>{body}</p>
