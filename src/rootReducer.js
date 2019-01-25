@@ -36,7 +36,8 @@ const INITIAL_STATE = {
   },
   loading: false,
   error: false,
-  postCounter: 3
+  postCounter: 3,
+  postsAPI: []
 };
 
 function rootReducer(state = INITIAL_STATE, action) {
@@ -55,6 +56,12 @@ function rootReducer(state = INITIAL_STATE, action) {
           }
         },
         postCounter: state.postCounter + 1
+      };
+
+    case GET_POSTS:
+      return {
+        ...state,
+        posts: action.payload
       };
 
     case EDIT_POST: {
