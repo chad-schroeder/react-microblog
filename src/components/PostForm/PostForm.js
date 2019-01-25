@@ -41,7 +41,7 @@ class PostForm extends Component {
         <div
           className="py-3 px-4"
           style={{
-            borderTop: '3px solid #333',
+            borderTop: '4px solid #333',
             backgroundColor: '#e9ecef'
           }}
         >

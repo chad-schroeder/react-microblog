@@ -16,14 +16,19 @@ class Home extends Component {
 
     return (
       <>
-        <h2 className="lead">
-          Welcome to <strong>Microblog</strong>, our innovative site for
-          communicating on the information superhighway.
-        </h2>
         <div
-          className="mt-4 mb-0 py-3 px-4"
+          className="mb-4 px-4 py-3 bg-dark text-white"
+          style={{ borderTop: '4px solid #444' }}
+        >
+          <h2 style={{ fontSize: '1rem' }}>
+            Welcome to <strong>Microblog</strong>, our innovative site for
+            communicating on the information&nbsp;superhighway.
+          </h2>
+        </div>
+        <div
+          className="mb-0 py-3 px-4"
           style={{
-            borderTop: '3px solid #333',
+            borderTop: '4px solid #333',
             backgroundColor: '#e9ecef'
           }}
         >

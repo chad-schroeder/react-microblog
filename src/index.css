@@ -20,3 +20,12 @@ h5,
 h6 {
   line-height: 1.5;
 }
+
+h5,
+.h5 {
+  font-size: 1.15rem;
+}
+
+label {
+  margin-bottom: 0.2rem;
+}

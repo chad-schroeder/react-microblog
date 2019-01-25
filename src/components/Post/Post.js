@@ -50,15 +50,24 @@ class Post extends Component {
       return (
         <>
           <div
-            className="Post p-3 pb-4 bg-white"
-            style={{ borderTop: '3px solid #444' }}
+            className="Post mb-4 p-4 pb-4 bg-white"
+            style={{ borderTop: '4px solid #444' }}
           >
             <div className="media">
               <div className="media-body">
-                <h1 className="mb-0 h2" style={{ fontWeight: 600 }}>
+                <p
+                  className="mb-0 text-muted text-uppercase"
+                  style={{ fontSize: '0.85rem' }}
+                >
+                  Post
+                </p>
+                <h1
+                  className="mb-4 h2"
+                  style={{ fontSize: '1.8rem', fontWeight: 600 }}
+                >
                   {title}
                 </h1>
-                <p className="text-muted">{description}</p>
+                {/* <p className="text-muted">{description}</p> */}
               </div>
               <div className="ml-3 align-self-center">
                 <button
