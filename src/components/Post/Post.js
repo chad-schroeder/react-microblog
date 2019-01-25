@@ -37,11 +37,6 @@ class Post extends Component {
     const post = this.props.posts[this.props.match.params.id];
     const { title, body, comments } = post;
 
-    console.log(
-      'Get posts function in posts.js is',
-      this.props.getPostsFromAPI()
-    );
-
     if (this.state.isEditing) {
       return (
         <NewPostContainer

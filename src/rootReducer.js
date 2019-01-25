@@ -1,4 +1,5 @@
 import {
+  GET_POSTS,
   ADD_POST,
   EDIT_POST,
   DELETE_POST,
@@ -58,11 +59,23 @@ function rootReducer(state = INITIAL_STATE, action) {
         postCounter: state.postCounter + 1
       };
 
-    case GET_POSTS:
+    case GET_POSTS: {
+      console.log('GET POSTS', action.payload);
+
+      const posts = action.payload;
+
+      // refactor array of post data into post object
+      const post = posts.reduce((tally, post) => {
+        tally[post.id] = { ...post };
+        return tally;
+      }, {});
+
       return {
         ...state,
-        posts: action.payload
+        posts: post,
+        postsAPI: posts
       };
+    }
 
     case EDIT_POST: {
       const { id, title, description, body } = action.payload;

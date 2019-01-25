@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getPostsFromAPI } from '../createActions';
 import Home from '../components/Home/Home';
 
 class NewHomeContainer extends Component {
@@ -14,6 +15,9 @@ function mapStateToProps(state) {
   };
 }
 
-const connectedComponent = connect(mapStateToProps);
+const connectedComponent = connect(
+  mapStateToProps,
+  { getPostsFromAPI }
+);
 
 export default connectedComponent(NewHomeContainer);

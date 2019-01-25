@@ -5,7 +5,6 @@ import {
   editPost,
   deletePost,
   addComment,
-  getPostsFromAPI,
   deleteComment
 } from '../createActions';
 import Post from '../components/Post/Post';
@@ -24,7 +23,7 @@ function mapStateToProps(state) {
 
 const connectedComponent = connect(
   mapStateToProps,
-  { addPost, getPostsFromAPI, editPost, deletePost, addComment, deleteComment }
+  { addPost, editPost, deletePost, addComment, deleteComment }
 );
 
 export default connectedComponent(PostContainer);

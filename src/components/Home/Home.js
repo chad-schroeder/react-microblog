@@ -7,6 +7,10 @@ class Home extends Component {
     posts: []
   };
 
+  componentDidMount() {
+    this.props.getPostsFromAPI();
+  }
+
   render() {
     const posts = Object.values(this.props.posts).map(post => (
       <li key={uuid()} className="list-group-item">
