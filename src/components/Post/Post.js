@@ -24,7 +24,11 @@ class Post extends Component {
   }
 
   deletePost() {
-    this.props.deletePost(this.post_id);
+    console.log('Delete Post', this.post_id);
+
+    this.props.deletePostFromAPI(this.post_id);
+
+    // this.props.deletePost(this.post_id);
     this.props.history.push('/');
   }
 
@@ -120,11 +124,11 @@ class Post extends Component {
             </div>
           </div>
 
-          <CommentList
+          {/* <CommentList
             comments={comments}
             addComment={this.addComment}
             deleteComment={this.deleteComment}
-          />
+          /> */}
         </>
       );
     }

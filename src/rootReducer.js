@@ -43,7 +43,7 @@ function rootReducer(state = INITIAL_STATE, action) {
       // make copy of posts
       const posts = state.posts;
       // update/add post to posts
-      state.posts[post.id] = { ...post };
+      state.posts[post.id] = post;
 
       return {
         ...state,
@@ -51,21 +51,21 @@ function rootReducer(state = INITIAL_STATE, action) {
       };
     }
 
-    case ADD_POST:
-      console.log('Reducer [ADD_POST]', action.payload);
+    case ADD_POST: {
+      const post = action.payload;
 
       return {
         ...state,
         posts: {
           ...state.posts,
-          [state.postCounter]: {
-            ...action.payload,
-            id: state.postCounter,
+          [post.id]: {
+            ...post,
             comments: {}
           }
         },
         postCounter: state.postCounter + 1
       };
+    }
 
     case EDIT_POST: {
       const { id, title, description, body } = action.payload;
@@ -89,10 +89,13 @@ function rootReducer(state = INITIAL_STATE, action) {
     }
 
     case DELETE_POST: {
+      console.log('Reducer [DELETE_POST]', action.payload);
+
+      const id = action.payload;
       // make copy of posts
       const posts = { ...state.posts };
       // delete post
-      delete posts[action.payload];
+      delete posts[id];
 
       return {
         ...state,

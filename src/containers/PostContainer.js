@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   getPostFromAPI,
+  deletePostFromAPI,
   addPost,
   editPost,
   deletePost,
@@ -27,6 +28,7 @@ const connectedComponent = connect(
   mapStateToProps,
   {
     getPostFromAPI,
+    deletePostFromAPI,
     addPost,
     editPost,
     deletePost,

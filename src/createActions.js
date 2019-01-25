@@ -74,7 +74,19 @@ export function editPost(data) {
 
 /* Delete post from API */
 
+export function deletePostFromAPI(id) {
+  console.log('CreateActions [deletePostFromAPI]', id);
+
+  return async function(dispatch) {
+    const res = await axios.delete(`${BASE_URL}/api/posts/${id}`);
+    const post = res.data;
+    dispatch(deletePost(id));
+  };
+}
+
 export function deletePost(id) {
+  console.log('CreateActions [deletePost]', id);
+
   return {
     type: DELETE_POST,
     payload: id
