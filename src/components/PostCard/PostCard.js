@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 
 class PostCard extends Component {
   render() {
-    // console.log('postCard', this.props);
-    const { id, title, description } = this.props.value;
+    console.log('postCard this.props ', this.props);
+    // const id = Object.keys(this.props.posts);
+    // console.log('In PostCard, id is ', id);
+    const { title, description } = this.props.value;
+    console.log('In PostCard title description', title, description);
+    const id = this.props.id;
+    console.log('In PostCard, id is ', id);
 
     return (
       <Link to={`/${id}`} className="text-decoration-none">

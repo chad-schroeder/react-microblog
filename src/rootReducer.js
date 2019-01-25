@@ -9,15 +9,13 @@ import uuid from 'uuid';
 
 const DEFAULT_STATE = {
   posts: {
-    1: {
-      id: uuid(),
+    [uuid()]: {
       title: 'First Default Redux Title',
       description: 'First Default Redux Description',
       body: 'First Default Redux Body',
       comments: { 1: 'Default first Comment', 2: 'Default second comment' }
     },
-    2: {
-      id: uuid(),
+    [uuid()]: {
       title: 'Second Default Redux Title',
       description: 'Second Default Redux Description',
       body: 'Second Default Redux Body',

@@ -3,30 +3,21 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 // import PostForm from './components/PostForm/PostForm';
 import NewPostContainer from './containers/NewPost/NewPostContainer';
 import PostContainer from './containers/Post/PostContainer';
-import TitleListContainer from './containers/TitleList/TitleListContainer';
+// import TitleListContainer from './containers/TitleList/TitleListContainer';
 import Home from './components/Home/Home';
 
 class Routes extends Component {
   render() {
-    // const getPost = props => {
-    //   const post = this.props.posts.find(
-    //     post => post.id === +props.match.params.id
-    //   );
-    //   return (
-    // <PostContainer
-    //   postInfo={post}
-    //   addPost={this.props.addPost}
-    //   deletePost={this.props.deletePost}
-    //   addComment={this.props.addComment}
-    //   deleteComment={this.props.deleteComment}
-    //   {...props}
-    // />
-    // );
-    // };
+    console.log(
+      'In Routes, getPost, this.props is',
+      this.props,
+      'this.state is ',
+      this.state
+    );
 
     return (
       <Switch>
-        <Route exact path="/" render={() => <Home {...this.props} />} />
+        <Route exact path="/" render={() => <Home {...this.state} />} />
         <Route
           exact
           path="/new"
@@ -39,7 +30,12 @@ class Routes extends Component {
             />
           )}
         />
-        {/* <Route exact path="/:id" render={getPost} /> */}
+        {/* <Route exact path="/:id" render={this.post} /> */}
+        <Route
+          exact
+          path="/:id"
+          render={() => <PostContainer {...this.state} />}
+        />
         <Redirect to="/" />
       </Switch>
     );

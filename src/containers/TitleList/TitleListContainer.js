@@ -10,14 +10,16 @@ class TitleListContainer extends Component {
 
   render() {
     console.log('TitleListContainer ', this.props);
-    const posts = this.props;
 
     return (
       <div className="TitleList">
         <ul className="list-group list-group-flush">POST CARDS</ul>
 
-        {Object.values(posts.posts).map(post => (
-          <PostCard value={post} />
+        {Object.entries(this.props.posts).map(post => (
+          <PostCard
+            value={Object.values(post)[1]}
+            id={Object.values(post)[0]}
+          />
         ))}
       </div>
     );
