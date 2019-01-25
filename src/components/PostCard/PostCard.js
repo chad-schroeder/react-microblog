@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 class PostCard extends Component {
   render() {
-    const { id, title, description } = this.props;
+    // console.log('postCard', this.props);
+    const { id, title, description } = this.props.value;
 
     return (
       <Link to={`/${id}`} className="text-decoration-none">

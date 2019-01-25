@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PostForm from '../PostForm/PostForm';
-import CommentList from '../CommentList/CommentList';
+import CommentList from '../../components/CommentList/CommentList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PostForm from '../../components/PostForm/PostForm';
 
 class Post extends Component {
   constructor(props) {

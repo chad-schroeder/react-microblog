@@ -6,7 +6,7 @@ import {
   DELETE_COMMENT
 } from './action-types';
 
-export function add_post() {
+export function add_post(data) {
   return {
     type: ADD_POST,
     payload: data
@@ -17,14 +17,14 @@ export function edit_post() {
   return { type: EDIT_POST };
 }
 
-export function delete_post() {
+export function delete_post(id) {
   return { type: DELETE_POST, payload: id };
 }
 
-export function add_comment() {
+export function add_comment(comment_id) {
   return { type: ADD_COMMENT, payload: comment_id };
 }
 
-export function delete_comment() {
+export function delete_comment(comment_id) {
   return { type: DELETE_COMMENT, payload: comment_id };
 }

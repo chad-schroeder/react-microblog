@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
-import PostCard from '../PostCard/PostCard';
+import TitleListContainer from '../../containers/TitleList/TitleListContainer';
 
 class Home extends Component {
-  static defaultProps = {
-    posts: []
-  };
-
   render() {
-    const posts = this.props.posts.map(post => (
-      <li key={post.id} className="list-group-item">
-        <PostCard {...post} />
-      </li>
-    ));
-
+    console.log('Home', this.props);
     return (
       <>
         <h2 className="lead">
@@ -35,8 +26,8 @@ class Home extends Component {
           >
             Posts
           </h2>
+          <TitleListContainer {...this.props} />
         </div>
-        <ul className="list-group list-group-flush">{posts}</ul>
       </>
     );
   }

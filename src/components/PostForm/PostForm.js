@@ -22,7 +22,7 @@ class PostForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.addPost(this.state);
+    this.props.add_post(this.state);
     this.setState({
       title: '',
       description: '',
