@@ -58,10 +58,12 @@ function rootReducer(state = INITIAL_STATE, action) {
       };
 
     case EDIT_POST: {
-      console.log('Reducer [Edit Post]:', action.payload);
-
       const { id, title, description, body } = action.payload;
+
+      // make copy of posts
       const posts = { ...state.posts };
+
+      // update specific post
       posts[id] = {
         id,
         title,
@@ -77,7 +79,9 @@ function rootReducer(state = INITIAL_STATE, action) {
     }
 
     case DELETE_POST: {
+      // make copy of posts
       const posts = { ...state.posts };
+      // delete post
       delete posts[action.payload];
 
       return {
@@ -88,13 +92,19 @@ function rootReducer(state = INITIAL_STATE, action) {
 
     case ADD_COMMENT:
       const { post_id, text } = action.payload;
+
+      // make copy of comments; find specific comment
       const posts = { ...state.posts };
       const post = posts[post_id];
 
+      // generate random id
       const comment_id = uuid();
+
+      // make copy of comments; add comment to comments
       const comments = { ...post.comments };
       comments[comment_id] = { id: comment_id, text: text };
 
+      // add updated comments to post
       post.comments = comments;
 
       return {
@@ -105,15 +115,15 @@ function rootReducer(state = INITIAL_STATE, action) {
     case DELETE_COMMENT: {
       const { post_id, comment_id } = action.payload;
 
-      // make copy of all posts; find the correct post
+      // make copy of posts; find specific post
       const posts = { ...state.posts };
       const post = posts[post_id];
 
-      // make copy of all comments; delete the comment
+      // make copy of comments; delete comment
       const comments = { ...post.comments };
       delete comments[comment_id];
 
-      // re-attach updated comments to correct post
+      // add updated comments to post
       post.comments = comments;
 
       return {
