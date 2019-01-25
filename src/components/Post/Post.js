@@ -50,45 +50,49 @@ class Post extends Component {
       return (
         <>
           <div
-            className="Post mb-3 p-4 pb-4 bg-white"
-            style={{ borderTop: '4px solid #444' }}
+            className="Post mb-0 p-4 bg-white"
+            style={{
+              borderTop: '4px solid #444',
+              borderBottom: '1px solid #d5d5d5'
+            }}
           >
-            <div className="media">
-              <div className="media-body">
-                <p
-                  className="mb-0 text-muted text-uppercase"
-                  style={{ fontSize: '0.85rem' }}
-                >
-                  Post
-                </p>
-                <h1
-                  className="mb-4 h2"
-                  style={{ fontSize: '1.8rem', fontWeight: 600 }}
-                >
-                  {title}
-                </h1>
-              </div>
-              <div className="ml-3 align-self-center">
-                <div className="btn-group" role="group">
-                  <button
-                    className="btn btn-white px-3 text-primary"
-                    style={{ borderColor: '#dee2e6' }}
-                    onClick={this.handleEdit}
-                  >
-                    <FontAwesomeIcon icon="edit" />
-                  </button>
-                  <button
-                    className="btn btn-white text-danger px-3"
-                    style={{ borderColor: '#dee2e6' }}
-                    onClick={this.deletePost}
-                  >
-                    <FontAwesomeIcon icon="times" />
-                  </button>
-                </div>
-              </div>
-            </div>
+            <p
+              className="mb-0 text-muted text-uppercase"
+              style={{ fontSize: '0.85rem' }}
+            >
+              Post
+            </p>
+            <h1
+              className="mb-3 h2"
+              style={{ fontSize: '1.8rem', fontWeight: 600 }}
+            >
+              {title}
+            </h1>
             <p>{body}</p>
           </div>
+
+          <div
+            className="mb-3 py-2 px-4"
+            style={{ backgroundColor: 'rgb(233, 236, 239)' }}
+          >
+            <div className="btn-group" role="group">
+              <button
+                className="btn btn-link px-3 text-primary"
+                style={{ width: '40px' }}
+                onClick={this.handleEdit}
+              >
+                <FontAwesomeIcon icon="edit" />
+              </button>
+              <button
+                className="btn btn-link text-danger px-3"
+                style={{ width: '40px' }}
+                onClick={this.deletePost}
+              >
+                <FontAwesomeIcon icon="times" />
+              </button>
+            </div>
+          </div>
+
           <CommentList
             comments={comments}
             addComment={this.addComment}
