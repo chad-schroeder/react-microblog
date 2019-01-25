@@ -9,32 +9,33 @@ import {
 const uuid = require('uuid/v4');
 
 const INITIAL_STATE = {
-  posts: {
-    '1': {
-      id: 1,
-      title: 'Hello, Redux!',
-      description: 'Take some time to think about your Redux plan.',
-      body: 'Make a plan before you start coding!',
-      comments: {
-        '1': {
-          id: 1,
-          text:
-            'When you add Redux-Thunk, you have to change the way you incorporate the dev tools into your store.'
-        },
-        '2': {
-          id: 2,
-          text: 'Take some time to think about your Redux plan'
-        }
-      }
-    },
-    '2': {
-      id: 2,
-      title: 'Goodbye, World!',
-      description: 'Convert your app to Redux',
-      body: 'Figure out which components should be connected!',
-      comments: {}
-    }
-  },
+  posts: {},
+  // posts: {
+  //   '1': {
+  //     id: 1,
+  //     title: 'Hello, Redux!',
+  //     description: 'Take some time to think about your Redux plan.',
+  //     body: 'Make a plan before you start coding!',
+  //     comments: {
+  //       '1': {
+  //         id: 1,
+  //         text:
+  //           'When you add Redux-Thunk, you have to change the way you incorporate the dev tools into your store.'
+  //       },
+  //       '2': {
+  //         id: 2,
+  //         text: 'Take some time to think about your Redux plan'
+  //       }
+  //     }
+  //   },
+  //   '2': {
+  //     id: 2,
+  //     title: 'Goodbye, World!',
+  //     description: 'Convert your app to Redux',
+  //     body: 'Figure out which components should be connected!',
+  //     comments: {}
+  //   }
+  // },
   loading: false,
   error: false,
   postCounter: 3,

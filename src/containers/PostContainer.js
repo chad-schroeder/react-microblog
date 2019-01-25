@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
+  getPost,
   addPost,
   editPost,
   deletePost,
@@ -11,22 +12,22 @@ import Post from '../components/Post/Post';
 
 class PostContainer extends Component {
   render() {
-    // get post details + comments from API
-    // attach post props to <Post>
-
-    return <Post {...this.props} />;
+    return <Post post={this.props.post} />;
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  const id = ownProps.match.params.id;
+  console.log('Post', state.posts[id]);
+
   return {
-    posts: state.posts
+    post: state.posts[id]
   };
 }
 
 const connectedComponent = connect(
   mapStateToProps,
-  { addPost, editPost, deletePost, addComment, deleteComment }
+  { getPost, addPost, editPost, deletePost, addComment, deleteComment }
 );
 
 export default connectedComponent(PostContainer);

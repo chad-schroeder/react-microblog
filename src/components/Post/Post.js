@@ -14,6 +14,10 @@ class Post extends Component {
     this.deleteComment = this.deleteComment.bind(this);
   }
 
+  componentDidMount() {
+    // fire the API getPost
+  }
+
   handleEdit() {
     this.setState({ isEditing: true });
   }
@@ -34,8 +38,8 @@ class Post extends Component {
   }
 
   render() {
-    const post = this.props.posts[this.props.match.params.id];
-    const { title, body, comments } = post;
+    if (!this.props.post) return <p>Loading...</p>;
+    const { title, body, comments } = this.props.post;
 
     if (this.state.isEditing) {
       return (
@@ -113,11 +117,11 @@ class Post extends Component {
             </div>
           </div>
 
-          <CommentList
+          {/* <CommentList
             comments={comments}
             addComment={this.addComment}
             deleteComment={this.deleteComment}
-          />
+          /> */}
         </>
       );
     }

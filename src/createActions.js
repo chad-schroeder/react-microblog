@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import {
   ADD_POST,
+  GET_POST,
   EDIT_POST,
   DELETE_POST,
   ADD_COMMENT,
@@ -16,6 +17,23 @@ export function getPostsFromAPI() {
     const res = await axios.get(BASE_URL + '/api/posts');
     const posts = res.data;
     dispatch(getPosts(posts));
+  };
+}
+
+export function getPostFromAPI(id) {
+  return async function(dispatch) {
+    const res = await axios.get(`${BASE_URL}/api/posts/${id}`);
+    const post = res.data;
+    console.log('getPostsFromAPI', post);
+    dispatch(getPost(post));
+  };
+}
+
+export function getPost(data) {
+  console.log('getPost', data);
+  return {
+    type: GET_POST,
+    payload: data
   };
 }
 
