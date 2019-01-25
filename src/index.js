@@ -9,7 +9,9 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faEdit,
   faTimes,
-  faRssSquare
+  faThumbsUp,
+  faThumbsDown,
+  faHome
 } from '@fortawesome/free-solid-svg-icons';
 import './index.css';
 import App from './App';
@@ -17,7 +19,9 @@ import * as serviceWorker from './serviceWorker';
 
 library.add(faEdit);
 library.add(faTimes);
-library.add(faRssSquare);
+library.add(faThumbsUp);
+library.add(faThumbsDown);
+library.add(faHome);
 
 const store = createStore(
   rootReducer,

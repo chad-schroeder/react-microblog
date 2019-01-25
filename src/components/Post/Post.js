@@ -72,7 +72,7 @@ class Post extends Component {
           </div>
 
           <div
-            className="mb-3 py-2 px-4"
+            className="d-flex justify-content-between mb-3 py-2 px-4"
             style={{ backgroundColor: 'rgb(233, 236, 239)' }}
           >
             <div className="btn-group" role="group">
@@ -90,6 +90,26 @@ class Post extends Component {
               >
                 <FontAwesomeIcon icon="times" />
               </button>
+            </div>
+            {/* up/down votes */}
+            <div className="d-flex align-items-center">
+              <p className="m-0">
+                <strong>0</strong> votes
+              </p>
+              <div className="btn-group" role="group">
+                <button
+                  className="btn btn-link px-3 text-primary"
+                  style={{ width: '40px' }}
+                >
+                  <FontAwesomeIcon icon="thumbs-up" />
+                </button>
+                <button
+                  className="btn btn-link text-danger px-3"
+                  style={{ width: '40px' }}
+                >
+                  <FontAwesomeIcon icon="thumbs-down" />
+                </button>
+              </div>
             </div>
           </div>
 
