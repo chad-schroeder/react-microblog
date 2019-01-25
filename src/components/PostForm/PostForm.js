@@ -22,16 +22,20 @@ class PostForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.addPost(this.state);
-    this.setState({
-      title: '',
-      description: '',
-      body: ''
-    });
+
+    if (this.props.isEditing) {
+      const payload = { ...this.state, id: this.props.id };
+      this.props.editPost(payload);
+    } else {
+      this.props.addPost(this.state);
+    }
+
     this.props.history.push('/');
   }
 
   render() {
+    console.log('PostForm', this.state);
+
     return (
       <>
         <div

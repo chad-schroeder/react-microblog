@@ -9,12 +9,8 @@ class NewPostContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
 const connectedComponent = connect(
-  mapStateToProps,
+  null,
   { addPost }
 );
 

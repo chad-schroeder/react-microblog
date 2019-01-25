@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   addPost,
+  editPost,
   deletePost,
   addComment,
   deleteComment
@@ -22,7 +23,7 @@ function mapStateToProps(state) {
 
 const connectedComponent = connect(
   mapStateToProps,
-  { addPost, deletePost, addComment, deleteComment }
+  { addPost, editPost, deletePost, addComment, deleteComment }
 );
 
 export default connectedComponent(PostContainer);

@@ -1,5 +1,6 @@
 import {
   ADD_POST,
+  EDIT_POST,
   DELETE_POST,
   ADD_COMMENT,
   DELETE_COMMENT
@@ -55,6 +56,25 @@ function rootReducer(state = INITIAL_STATE, action) {
         },
         postCounter: state.postCounter + 1
       };
+
+    case EDIT_POST: {
+      console.log('Reducer [Edit Post]:', action.payload);
+
+      const { id, title, description, body } = action.payload;
+      const posts = { ...state.posts };
+      posts[id] = {
+        id,
+        title,
+        description,
+        body,
+        comments: posts[id].comments
+      };
+
+      return {
+        ...state,
+        posts: posts
+      };
+    }
 
     case DELETE_POST: {
       const posts = { ...state.posts };

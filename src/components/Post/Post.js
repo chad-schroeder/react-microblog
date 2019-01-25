@@ -41,6 +41,8 @@ class Post extends Component {
       return (
         <NewPostContainer
           heading="Edit Post"
+          isEditing={true}
+          {...this.props}
           {...this.props.posts[this.props.match.params.id]}
         />
       );

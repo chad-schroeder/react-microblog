@@ -1,5 +1,6 @@
 import {
   ADD_POST,
+  EDIT_POST,
   DELETE_POST,
   ADD_COMMENT,
   DELETE_COMMENT
@@ -8,6 +9,13 @@ import {
 export function addPost(data) {
   return {
     type: ADD_POST,
+    payload: data
+  };
+}
+
+export function editPost(data) {
+  return {
+    type: EDIT_POST,
     payload: data
   };
 }
