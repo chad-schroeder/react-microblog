@@ -15,7 +15,7 @@ class NavBox extends Component {
             >
               <p
                 className="text-muted text-uppercase mb-0"
-                style={{ fontSize: '0.85rem' }}
+                style={{ fontSize: '0.8rem' }}
               >
                 Get in the Rithm of blogging!
               </p>
