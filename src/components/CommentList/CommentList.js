@@ -10,7 +10,6 @@ class CommentList extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.addComment = this.addComment.bind(this);
   }
 
   handleChange(evt) {

@@ -34,7 +34,7 @@ class Routes extends Component {
         <Route
           exact
           path="/:id"
-          render={() => <PostContainer {...this.state} />}
+          render={props => <PostContainer {...props} {...this.state} />}
         />
         <Redirect to="/" />
       </Switch>
