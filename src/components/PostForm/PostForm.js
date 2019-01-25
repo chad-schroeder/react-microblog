@@ -105,4 +105,10 @@ class PostForm extends Component {
   }
 }
 
+PostForm.defaultProps = {
+  title: '',
+  description: '',
+  body: ''
+};
+
 export default PostForm;
