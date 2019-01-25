@@ -7,17 +7,39 @@ class PostForm extends Component {
     this.state = {
       title: this.props.title,
       description: this.props.description,
-      body: this.props.body
+      body: this.props.body,
+      validForm: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.validateForm = this.validateForm.bind(this);
+  }
+
+  componentDidMount() {
+    this.validateForm();
+  }
+
+  validateForm() {
+    let validated = false;
+    const { title, description, body } = this.state;
+
+    // if all fields have at least some input, validate
+    if (title && description && body) validated = true;
+
+    this.setState({
+      validForm: validated
+    });
   }
 
   handleChange(evt) {
-    this.setState({
-      [evt.target.name]: evt.target.value
-    });
+    this.setState(
+      {
+        [evt.target.name]: evt.target.value
+      },
+      // run form validator after input field updated
+      () => this.validateForm()
+    );
   }
 
   handleSubmit(evt) {
@@ -34,8 +56,6 @@ class PostForm extends Component {
   }
 
   render() {
-    console.log('PostForm', this.state);
-
     return (
       <>
         <div
@@ -61,7 +81,6 @@ class PostForm extends Component {
             <input
               type="text"
               name="title"
-              id="title"
               className="form-control"
               value={this.state.title}
               onChange={this.handleChange}
@@ -72,7 +91,6 @@ class PostForm extends Component {
             <label htmlFor="description">Description</label>
             <input
               type="text"
-              id="description"
               name="description"
               className="form-control"
               value={this.state.description}
@@ -83,7 +101,6 @@ class PostForm extends Component {
           <div className="form-group">
             <label htmlFor="body">Body</label>
             <textarea
-              id="body"
               name="body"
               className="form-control"
               rows="3"
@@ -91,8 +108,13 @@ class PostForm extends Component {
               onChange={this.handleChange}
             />
           </div>
+
           <div className="d-flex justify-content-end">
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={!this.state.validForm}
+            >
               Save
             </button>
             <Link to="/" className="btn btn-secondary ml-2">
