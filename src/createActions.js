@@ -65,6 +65,16 @@ export function addPost(data) {
 
 /* Edit post in API */
 
+export function editPostInAPI(data) {
+  console.log('CreateActions [editPostInAPI]', data);
+
+  return async function(dispatch) {
+    const res = await axios.put(`${BASE_URL}/api/posts/${data.id}`, data);
+    const post = res.data;
+    dispatch(deletePost(post));
+  };
+}
+
 export function editPost(data) {
   return {
     type: EDIT_POST,
