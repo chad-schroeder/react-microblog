@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './rootReducer';
 import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from "./reducers/root";
+import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   faEdit,
   faTimes,
@@ -16,8 +20,6 @@ import {
   faHome
 } from '@fortawesome/free-solid-svg-icons';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
 library.add(faEdit);
 library.add(faTimes);
@@ -25,15 +27,10 @@ library.add(faThumbsUp);
 library.add(faThumbsDown);
 library.add(faHome);
 
-// const store = createStore(
-//   rootReducer,
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// );
-
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
+  composeWithDevTools(
+    applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>
