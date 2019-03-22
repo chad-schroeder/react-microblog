@@ -1,0 +1,21 @@
+.Post {
+  border-top: 4px solid #444;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.Post h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.Post-eyebrow {
+  font-size: 0.85rem;
+}
+
+.Post footer {
+  background-color: rgb(233, 236, 239);
+}
+
+.Post footer button {
+  width: 40px;
+}
